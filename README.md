@@ -11,4 +11,4 @@ Usage:
 ------
 
     $ pip install cookiecutter
-    $ cookiecutter gh:hbristow/cookiecutter-cpp
+    $ cookiecutter gh:reinout91/cookiecutter-cpp
