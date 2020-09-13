@@ -38,5 +38,5 @@ add_subdirectory(src)
 # Must be in the top-most CMakeLists.txt file.
 enable_testing()
 # Outsource tests to another folder.
-add_subdirectory(tests)
+add_subdirectory(test)
 add_subdirectory(doc)
