@@ -1,2 +1,3 @@
-# Target:   {{ cookiecutter.project_name }}
-add_subdirectory({{ cookiecutter.project_name }})
+add_library(main main.cpp)
+
+target_link_libraries(main)
