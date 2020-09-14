@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-  printHello();
+  std::cout << sum(1,2) <<std::endl;
 return 0;
 }
