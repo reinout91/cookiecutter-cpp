@@ -1,3 +1,3 @@
 #pragma once;
 #include <iostream>
-void printHello();
+int sum();
