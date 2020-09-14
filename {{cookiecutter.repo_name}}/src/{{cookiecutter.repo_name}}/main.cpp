@@ -1,8 +1,9 @@
 #include <iostream>
+#include <tools.h>
 using namespace std;
 
 int main()
 {
-std::cout << "hello world" << std::endl;
+  printHello();
 return 0;
 }
