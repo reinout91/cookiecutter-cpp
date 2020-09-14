@@ -1,4 +1,5 @@
 #include "./tools.h"
-void printHello()
+int sum(int a, int b)
 {
-  std::cout << "hello" << std::endl
+  return a + b;
+}
