@@ -32,7 +32,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 # ---------------------------------------------------------
 add_subdirectory(external)
 # Tell cmake where to look for *.h files.
-include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/src/{{cookiecutter.repo_name}})
 # Outsource the actual processing to folders.
 add_subdirectory(src)
 # Must be in the top-most CMakeLists.txt file.
