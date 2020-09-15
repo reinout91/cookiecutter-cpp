@@ -2,7 +2,7 @@
 file(GLOB SOURCES *.cpp)
 add_executable(${PROJECT_NAME}_test ${SOURCES})
 target_link_libraries(${PROJECT_NAME}_test {{cookiecutter.repo_name}}_utils libgtest)
-
+target_include_directories({{cookiecutter.repo_name}}Test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 # Register the tests
 add_test(NAME ${PROJECT_NAME}_test
         COMMAND ${PROJECT_NAME}_test)
