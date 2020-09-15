@@ -9,7 +9,7 @@ Doxygen enables documentation.
 
 This template was made by combining:
 An existing Cookiecutter template with https://github.com/hbristow/cookiecutter-cpp with:  
-A lecture from Igor Bogoslavskyi's videos https://www.youtube.com/watch?v=q8xO2eJijy4&list=PLgnQpQtFTOGR50iIOtO36nK6aNPtVq98C&index=4 
+A lecture of Igor Bogoslavskyi https://www.youtube.com/watch?v=q8xO2eJijy4&list=PLgnQpQtFTOGR50iIOtO36nK6aNPtVq98C&index=4 
 
 
 
