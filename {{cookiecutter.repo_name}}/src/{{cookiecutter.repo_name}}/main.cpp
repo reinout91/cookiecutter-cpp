@@ -1,5 +1,5 @@
 #include <iostream>
-#include <tools.h>
+#include <{{cookiecutter.repo_name}}_utils.h>
 using namespace std;
 
 int main()
