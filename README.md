@@ -18,3 +18,11 @@ Usage:
 
     $ pip install cookiecutter
     $ cookiecutter gh:reinout91/cookiecutter-cpp
+    $ cd {project dir}/build
+    $ cmake ..
+    $ make
+    $ ctest -vv
+    $  ../bin/./main
+    
+
+ 
