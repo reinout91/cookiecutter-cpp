@@ -1,3 +1,3 @@
 #pragma once
 #include <iostream>
-int sum();
+int sum(int, int);
