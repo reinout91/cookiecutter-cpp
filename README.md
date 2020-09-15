@@ -22,7 +22,7 @@ Usage:
     $ cmake ..
     $ make
     $ ctest -vv
-    $  ../bin/./main
+    $  ../bin/main
     
 
  
