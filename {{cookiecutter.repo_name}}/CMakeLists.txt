@@ -2,6 +2,11 @@
 # {{ cookiecutter.description }}
 # Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
 cmake_minimum_required(VERSION 3.1)
+
+# Package manager manager
+include(pmm.cmake)
+
+# Project
 project({{ cookiecutter.project_name }} C CXX)
 set(PROJECT_DESCRIPTION   "{{ cookiecutter.description }}")
 set(PROJECT_AUTHOR        "{{ cookiecutter.author }}")
