@@ -1,7 +1,7 @@
 #include <iostream>
 #include <{{cookiecutter.repo_name}}_utils.h>
 #include <fmt/core.h> //packagemanager downloaded library.
-using namespace std;
+namespace std{
 
 int main()
 {
@@ -9,3 +9,4 @@ int main()
   std::cout << message <<std::endl;
 return 0;
 }
+};
