@@ -3,8 +3,8 @@
 # Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
 cmake_minimum_required(VERSION 3.1)
 
-# Package manager manager
-include(pmm.cmake)
+# Find required packages for project
+find_package(fmt CONFIG REQUIRED)
 
 # Project
 project({{ cookiecutter.project_name }} C CXX)
@@ -31,6 +31,17 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
 # Tell cmake to output binaries here:
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+
+# Package manager manager
+include(pmm.cmake)
+pmm(
+  # Use vcpkg
+  VCPKG
+  # Specify vcpkg branch, tag, or revision
+  REVISION master
+  # Space seperated list of required vcpkg packages
+  REQUIRES fmt
+)
 
 # ---------------------------------------------------------
 # Features
