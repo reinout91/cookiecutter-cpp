@@ -3,8 +3,7 @@
 # Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
 cmake_minimum_required(VERSION 3.2)
 
-# Find required packages for project
-find_package(fmt CONFIG REQUIRED)
+
 
 # can be useful for vim?
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
