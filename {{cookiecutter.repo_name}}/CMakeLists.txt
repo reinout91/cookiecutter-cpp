@@ -1,7 +1,7 @@
 # {{ cookiecutter.project_name }}
 # {{ cookiecutter.description }}
 # Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.2)
 
 # Find required packages for project
 find_package(fmt CONFIG REQUIRED)
