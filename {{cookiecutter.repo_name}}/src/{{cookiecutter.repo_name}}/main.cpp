@@ -1,5 +1,5 @@
 #include <iostream>
-#include <{{cookiecutter.repo_name}}_utils.h> //included package
+#include <{{cookiecutter.repo_name}}_utils.h>
 #include <fmt/core.h> //packagemanager downloaded library.
 namespace std{
 
