@@ -32,7 +32,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-# Package manager manager
+# Package manager manager (fmt is just a sample library to test the manager)
 include(pmm.cmake)
 pmm(
   # Use vcpkg
@@ -42,6 +42,9 @@ pmm(
   # Space seperated list of required vcpkg packages
   REQUIRES fmt
 )
+
+# Find required packages for project
+find_package(fmt CONFIG REQUIRED)
 
 # ---------------------------------------------------------
 # Features
