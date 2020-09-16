@@ -6,6 +6,9 @@ cmake_minimum_required(VERSION 3.1)
 # Find required packages for project
 find_package(fmt CONFIG REQUIRED)
 
+# can be useful for vim?
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Project
 project({{ cookiecutter.project_name }} C CXX)
 set(PROJECT_DESCRIPTION   "{{ cookiecutter.description }}")
