@@ -1,9 +1,11 @@
 #include <iostream>
 #include <{{cookiecutter.repo_name}}_utils.h>
+#include <fmt/core.h>
 using namespace std;
 
 int main()
 {
-  std::cout << "sum: " << sum(1,2) <<std::endl;
+  auto message = fmt::format("The answer is {}", sum(1,2));
+  std::cout << message <<std::endl;
 return 0;
 }
