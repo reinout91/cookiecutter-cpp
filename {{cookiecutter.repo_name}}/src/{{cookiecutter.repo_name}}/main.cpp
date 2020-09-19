@@ -7,6 +7,6 @@ int main()
 {
   auto message = fmt::format("The answer is {}", sum(1,2));
   std::cout << message <<std::endl;
-return 0;
+return EXIT_SUCCESS;
 }
 
