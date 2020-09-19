@@ -1,3 +1,4 @@
+# TODO: Stick to https://cliutils.gitlab.io/modern-cmake/chapters/intro/dodonot.html
 # {{ cookiecutter.project_name }}
 # {{ cookiecutter.description }}
 # Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
