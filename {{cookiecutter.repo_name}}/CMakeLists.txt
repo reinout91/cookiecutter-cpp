@@ -1,20 +1,19 @@
-# TODO: Stick to https://cliutils.gitlab.io/modern-cmake/chapters/intro/dodonot.html
-# {{ cookiecutter.project_name }}
-# {{ cookiecutter.description }}
-# Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
+# matrix_example
+# A rock solid project with enforced style, testing and static analysis
+# Copyright 2020, First Last
 cmake_minimum_required(VERSION 3.2)
 
 # can be useful for vim?
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Project
-project({{ cookiecutter.project_name }}
-  LANGUAGES CXX
-  VERSION {{ cookiecutter.version }}
-  )
-set(PROJECT_DESCRIPTION   "{{ cookiecutter.description }}")
-set(PROJECT_AUTHOR        "{{ cookiecutter.author }}")
-set(PROJECT_URL           "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.repo_name }}")
+project(matrix_example C CXX)
+set(PROJECT_DESCRIPTION   "A rock solid project with enforced style, testing and static analysis")
+set(PROJECT_AUTHOR        "First Last")
+set(PROJECT_URL           "https://github.com/flast/matrix_example")
+set(PROJECT_VERSION_MAJOR "0")
+set(PROJECT_VERSION_MINOR "0")
+set(PROJECT_VERSION_PATCH "1")
 
 # Build flags
 # Set build type if not set.
@@ -25,9 +24,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set (CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
-{% if cookiecutter.pedantic -%}
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
-{%- endif %}
 
 # Tell cmake to output binaries here:
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Static link libraries
@@ -47,13 +44,14 @@ pmm(
 
 # Find required packages for project
 find_package(fmt CONFIG REQUIRED)
+find_package(Armadillo REQUIRED) #install it using ubuntu package manager:  sudo apt-get install libarmadillo-dev
 
 # ---------------------------------------------------------
 # Features
 # ---------------------------------------------------------
 add_subdirectory(external)
 # Tell cmake where to look for *.h files.
-include_directories(${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/src/{{cookiecutter.repo_name}})
+include_directories(${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/src/matrix_example )
 # Outsource the actual processing to folders.
 add_subdirectory(src)
 # Must be in the top-most CMakeLists.txt file.
