@@ -6,15 +6,17 @@ cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Project
-  
 cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
-project({{cookiecutter.repo_name}} C CXX)
-set(PROJECT_DESCRIPTION   "{{ cookiecutter.description }}")
-set(PROJECT_AUTHOR        "{{ cookiecutter.author }}")
-set(PROJECT_URL           "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.repo_name }}") 
-set(PROJECT_VERSION_MAJOR "{{ cookiecutter.version.split('.')[0] }}")
-set(PROJECT_VERSION_MINOR "{{ cookiecutter.version.split('.')[1] }}")
-set(PROJECT_VERSION_PATCH "{{ cookiecutter.version.split('.')[2] }}")
+project({{cookiecutter.repo_name}}
+  VERSION {{ cookiecutter.version }}
+  LANGUAGES CXX
+  PROJECT_DESCRIPTION   "{{ cookiecutter.description }}"
+  PROJECT_AUTHOR        "{{ cookiecutter.author }}"
+  PROJECT_URL           "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.repo_name }}"
+) 
+
+# require C++17
+target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_17)
 
 # Build flags
 # Set build type if not set.
