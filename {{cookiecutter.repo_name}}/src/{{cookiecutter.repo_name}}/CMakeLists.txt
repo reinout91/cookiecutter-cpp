@@ -1,3 +1,12 @@
+
+add_library(matrix_example_utils matrix_example_utils.cpp)
+add_executable({{ cookiecutter.project_name }} main.cpp)
+target_link_libraries({{ cookiecutter.project_name }} matrix_example_utils fmt::fmt ${ARMADILLO_LIBRARIES})
+
+# require C++17
+# target_compile_features ({{ cookiecutter.project_name }} INTERFACE cxx_std_14) #{{cookiecutter.repo_name}}
+
+
 # Set compile options
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
@@ -12,11 +21,3 @@ if (MSVC)
 else ()
   target_compile_options ({{ cookiecutter.project_name }} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
 endif ()
-
-
-add_library(matrix_example_utils matrix_example_utils.cpp)
-add_executable({{ cookiecutter.project_name }} main.cpp)
-target_link_libraries({{ cookiecutter.project_name }} matrix_example_utils fmt::fmt ${ARMADILLO_LIBRARIES})
-
-# require C++17
-# target_compile_features ({{ cookiecutter.project_name }} INTERFACE cxx_std_14) #{{cookiecutter.repo_name}}
