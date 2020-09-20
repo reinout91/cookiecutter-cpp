@@ -1,19 +1,20 @@
-# matrix_example
-# A rock solid project with enforced style, testing and static analysis
-# Copyright 2020, First Last
-cmake_minimum_required(VERSION 3.2)
+# {{ cookiecutter.project_name }}
+# {{ cookiecutter.description }}
+# Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
+cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
 
-# can be useful for vim?
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Project
-project(matrix_example C CXX)
-set(PROJECT_DESCRIPTION   "A rock solid project with enforced style, testing and static analysis")
-set(PROJECT_AUTHOR        "First Last")
-set(PROJECT_URL           "https://github.com/flast/matrix_example")
-set(PROJECT_VERSION_MAJOR "0")
-set(PROJECT_VERSION_MINOR "0")
-set(PROJECT_VERSION_PATCH "1")
+  
+cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
+project({{cookiecutter.repo_name}} C CXX)
+set(PROJECT_DESCRIPTION   "{{ cookiecutter.description }}")
+set(PROJECT_AUTHOR        "{{ cookiecutter.author }}")
+set(PROJECT_URL           "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.repo_name }}") 
+set(PROJECT_VERSION_MAJOR "{{ cookiecutter.version.split('.')[0] }}")
+set(PROJECT_VERSION_MINOR "{{ cookiecutter.version.split('.')[1] }}")
+set(PROJECT_VERSION_PATCH "{{ cookiecutter.version.split('.')[2] }}")
 
 # Build flags
 # Set build type if not set.
@@ -23,8 +24,12 @@ endif()
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set (CMAKE_CXX_STANDARD 11)
+
+# Build flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
+{% if cookiecutter.pedantic -%}
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
+{%- endif %}
 
 # Tell cmake to output binaries here:
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Static link libraries
