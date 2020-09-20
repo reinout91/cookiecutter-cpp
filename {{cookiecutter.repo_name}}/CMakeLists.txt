@@ -24,7 +24,15 @@ project({{cookiecutter.repo_name}}
 # require C++17
 target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_14)
 
+# Set build type if not set.
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
 # Set compile options
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 set_target_properties (${exename} PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
@@ -35,12 +43,6 @@ if (MSVC)
 else ()
   target_compile_options (${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
 endif ()
-
-
-# Set build type if not set.
-if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Release)
-endif()
 
 # Add the project package called {{ cookiecutter.project_name|upper }}
 add_subdirectory (src/{{ cookiecutter.project_name|upper }})
