@@ -1,3 +1,4 @@
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set (exename "{{ cookiecutter.project_name }}")
 add_library({{ cookiecutter.project_name }}_utils {{ cookiecutter.project_name }}_utils.cpp)
 add_executable(${exename} {{ cookiecutter.project_name }}.cpp)
