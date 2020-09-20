@@ -8,6 +8,10 @@ set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "lib" CACHE STRIN
 set ({{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR "doc" CACHE STRING "The installation doc directory")
 set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecutter.project_name|lower }}/cmake" CACHE STRING "The installation cmake directory")
 
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Static link libraries
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin) # Executables
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Dynamic link libraries
+
 # Make flags for running from an editor
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -65,3 +69,18 @@ install (EXPORT {{ cookiecutter.project_name }}-targets
   
 install (DIRECTORY lib/ DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %}_INSTALL_INCLUDE_DIR}){% endraw %}
 install (FILES LICENSE DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %}_INSTALL_DOC_DIR}){% endraw %}
+
+# Package manager manager (fmt is just a sample library to test the manager)
+include(pmm.cmake)
+pmm(
+  # Use vcpkg
+  VCPKG
+  # Specify vcpkg branch, tag, or revision
+  REVISION master
+  # Space seperated list of required vcpkg packages
+  REQUIRES fmt
+)
+
+# Find required packages for project
+find_package(fmt CONFIG REQUIRED)
+find_package(Armadillo REQUIRED) #install it using ubuntu package manager:  sudo apt-get install libarmadillo-dev
