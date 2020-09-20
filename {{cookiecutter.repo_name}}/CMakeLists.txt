@@ -26,20 +26,20 @@ endif()
 
 # testing
 enable_testing ()
-option ({{ cookiecutter.project_name }}_BUILD_TESTS "Build test programs" ON)
-if ({{ cookiecutter.project_name }}_BUILD_TESTS)
+option ({{ cookiecutter.project_name|upper }}_BUILD_TESTS "Build test programs" ON)
+if ({{ cookiecutter.project_name|upper }}_BUILD_TESTS)
   add_subdirectory (test)
 endif ()
 
 # install and export target
-install (TARGETS {{ cookiecutter.project_name }} EXPORT {{ cookiecutter.project_name }}-targets)
+install (TARGETS {{ cookiecutter.project_name|lower }} EXPORT {{ cookiecutter.project_name|lower }}-targets)
 
 install (EXPORT {{ cookiecutter.project_name }}-targets
-  FILE {{ cookiecutter.project_name }}-config.cmake
-  NAMESPACE {{ cookiecutter.project_name+'::' }}
-  DESTINATION ${{{ cookiecutter.project_name }}_INSTALL_CMAKE_DIR}
+  FILE {{ cookiecutter.project_name|lower }}-config.cmake
+  NAMESPACE {{ cookiecutter.project_name|append('::'}}
+  DESTINATION ${{{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR}
 )
 
-install (DIRECTORY include/ DESTINATION ${{{ cookiecutter.project_name }}_INSTALL_INCLUDE_DIR})
-install (FILES LICENSE DESTINATION ${{{ cookiecutter.project_name }}_INSTALL_DOC_DIR})
+install (DIRECTORY include/ DESTINATION ${{{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR})
+install (FILES LICENSE DESTINATION ${{{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR})
 
