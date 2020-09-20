@@ -24,11 +24,12 @@ project({{cookiecutter.repo_name}}
 # require C++17
 target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_17)
 
-# Build flags
 # Set build type if not set.
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
+
+add_subdirectory (src/{{ cookiecutter.project_name|upper }})
 
 # testing
 enable_testing ()
