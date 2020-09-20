@@ -3,6 +3,12 @@
 # Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
 cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
 
+# installation directories
+set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "include" CACHE STRING "The installation include directory")
+set ({{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR "doc" CACHE STRING "The installation doc directory")
+set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecutter.project_name|lower }}/cmake" CACHE STRING "The installation cmake directory")
+
+# Make flags for running from an editor
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Project
