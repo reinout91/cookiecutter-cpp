@@ -22,11 +22,11 @@ project({{cookiecutter.repo_name}}
 ) 
 
 # require C++17
-target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_17)
+target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_14)
 
 # Set compile options
 set_target_properties (${exename} PROPERTIES
-  CXX_STANDARD 11
+  CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   CXX_EXTENSIONS OFF
 )
