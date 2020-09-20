@@ -16,7 +16,7 @@ set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecut
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Project
-project({{cookiecutter.repo_name}} VERSION {{ cookiecutter.version }} LANGUAGES CXX PROJECT_DESCRIPTION "{{ cookiecutter.description }}" PROJECT_AUTHOR "{{ cookiecutter.author }}" PROJECT_URL "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.repo_name }}") 
+project({{cookiecutter.repo_name}} VERSION {{ cookiecutter.version }} LANGUAGES CXX) 
 
 # require C++17
 target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_14)
