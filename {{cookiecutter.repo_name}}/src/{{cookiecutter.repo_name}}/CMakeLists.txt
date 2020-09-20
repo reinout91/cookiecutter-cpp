@@ -1,6 +1,6 @@
 
 add_library({{ cookiecutter.project_name }}_utils {{ cookiecutter.project_name }}_utils.cpp)
-add_executable({{ cookiecutter.project_name }} main.cpp)
+add_executable({{ cookiecutter.project_name }} {{ cookiecutter.project_name }}.cpp)
 target_link_libraries({{ cookiecutter.project_name }} {{ cookiecutter.project_name }}_utils fmt::fmt ${ARMADILLO_LIBRARIES})
 
 # require C++17
