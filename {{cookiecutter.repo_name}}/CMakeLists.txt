@@ -23,46 +23,23 @@ target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_17)
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-set (CMAKE_CXX_STANDARD 11)
 
-# Build flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
-{% if cookiecutter.pedantic -%}
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
-{%- endif %}
+# testing
+enable_testing ()
+option ({{ cookiecutter.project_name }}_BUILD_TESTS "Build test programs" ON)
+if ({{ cookiecutter.project_name }}_BUILD_TESTS)
+  add_subdirectory (test)
+endif ()
 
-# Tell cmake to output binaries here:
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Static link libraries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin) # Executables
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Dynamic link libraries
+# install and export target
+install (TARGETS {{ cookiecutter.project_name }} EXPORT {{ cookiecutter.project_name }}-targets)
 
-# Package manager manager (fmt is just a sample library to test the manager)
-include(pmm.cmake)
-pmm(
-  # Use vcpkg
-  VCPKG
-  # Specify vcpkg branch, tag, or revision
-  REVISION master
-  # Space seperated list of required vcpkg packages
-  REQUIRES fmt
+install (EXPORT {{ cookiecutter.project_name }}-targets
+  FILE {{ cookiecutter.project_name }}-config.cmake
+  NAMESPACE {{ cookiecutter.project_name }}::
+  DESTINATION ${{{ cookiecutter.project_name }}_INSTALL_CMAKE_DIR}
 )
 
-# Find required packages for project
-find_package(fmt CONFIG REQUIRED)
-find_package(Armadillo REQUIRED) #install it using ubuntu package manager:  sudo apt-get install libarmadillo-dev
+install (DIRECTORY include/ DESTINATION ${{{ cookiecutter.project_name }}_INSTALL_INCLUDE_DIR})
+install (FILES LICENSE DESTINATION ${{{ cookiecutter.project_name }}_INSTALL_DOC_DIR})
 
-# ---------------------------------------------------------
-# Features
-# ---------------------------------------------------------
-add_subdirectory(external)
-# Tell cmake where to look for *.h files.
-include_directories(${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/src/matrix_example )
-# Outsource the actual processing to folders.
-add_subdirectory(src)
-# Must be in the top-most CMakeLists.txt file.
-enable_testing()
-# Outsource tests to another folder.
-add_subdirectory(test)
-add_subdirectory(doc)
