@@ -37,5 +37,5 @@ install (TARGETS {{ cookiecutter.project_name|lower }} EXPORT {{ cookiecutter.pr
 install (EXPORT {{ cookiecutter.project_name }}-targets
   FILE {{ cookiecutter.project_name|lower }}-config.cmake
   NAMESPACE {{ cookiecutter.project_name+'::' }}
-  DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper}}{% raw %}(_INSTALL_CMAKE_DIR}{% endraw %}
+  DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper}}{% raw %}_INSTALL_CMAKE_DIR}{% endraw %}
   )
