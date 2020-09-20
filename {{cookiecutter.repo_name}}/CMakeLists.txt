@@ -41,8 +41,8 @@ else ()
   target_compile_options (${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
 endif ()
 
-# Add the project package called {{ cookiecutter.project_name|upper }}
-add_subdirectory (src/{{ cookiecutter.project_name|upper }})
+# Add the project package called {{ cookiecutter.project_name }}
+add_subdirectory (src/{{ cookiecutter.project_name|lower }})
 
 # testing
 enable_testing ()
