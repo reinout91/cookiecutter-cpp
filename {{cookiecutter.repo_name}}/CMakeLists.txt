@@ -24,6 +24,19 @@ project({{cookiecutter.repo_name}}
 # require C++17
 target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_17)
 
+# Set compile options
+set_target_properties (${exename} PROPERTIES
+  CXX_STANDARD 11
+  CXX_STANDARD_REQUIRED ON
+  CXX_EXTENSIONS OFF
+)
+if (MSVC)
+  target_compile_options (${exename} PRIVATE /W4 /WX /utf-8)
+else ()
+  target_compile_options (${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
+endif ()
+
+
 # Set build type if not set.
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
