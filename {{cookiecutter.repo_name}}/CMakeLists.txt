@@ -16,7 +16,10 @@ set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecut
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Project
-project({{cookiecutter.repo_name}} VERSION {{ cookiecutter.version }} LANGUAGES CXX) 
+project({{cookiecutter.repo_name}} VERSION {{ cookiecutter.version }} LANGUAGES CXX)
+set(PROJECT_DESCRIPTION   "A rock solid project with enforced style, testing and static analysis")
+set(PROJECT_AUTHOR        "First Last")
+set(PROJECT_URL           "https://github.com/flast/matrix_example")
 
 # require C++17
 target_compile_features ({{cookiecutter.repo_name}} INTERFACE cxx_std_14)
