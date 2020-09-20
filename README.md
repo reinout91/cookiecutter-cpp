@@ -1,6 +1,8 @@
 cookiecutter-cpp
 ================
 
+Currently works only for Linux compilers, I'm currently changing the CMake scripts to make them compiler independent.
+
 A test-driven C++ project template built on CMake and GoogleTest
 
 CMake is a fast and easy build tool.  
