@@ -29,6 +29,7 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
+# Add the project package called {{ cookiecutter.project_name|upper }}
 add_subdirectory (src/{{ cookiecutter.project_name|upper }})
 
 # testing
