@@ -39,3 +39,6 @@ install (EXPORT {{ cookiecutter.project_name }}-targets
   NAMESPACE {{ cookiecutter.project_name+'::' }}
   DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper}}{% raw %}_INSTALL_CMAKE_DIR}{% endraw %}
   )
+  
+install (DIRECTORY include/ DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %_INSTALL_INCLUDE_DIR)}{% endraw %}
+install (FILES LICENSE DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %_INSTALL_DOC_DIR)}{% endraw %}
