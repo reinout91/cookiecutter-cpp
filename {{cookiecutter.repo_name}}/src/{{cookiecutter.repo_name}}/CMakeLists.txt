@@ -1,11 +1,8 @@
 set (exename "{{ cookiecutter.project_name }}")
 add_library({{ cookiecutter.project_name }}_utils {{ cookiecutter.project_name }}_utils.cpp)
 add_executable(${exename} {{ cookiecutter.project_name }}.cpp)
+target_compile_features ({{ cookiecutter.project_name }}_utils INTERFACE cxx_std_14)
 target_link_libraries(${exename} {{ cookiecutter.project_name }}_utils fmt::fmt ${ARMADILLO_LIBRARIES})
-
-# require C++17
-# target_compile_features ({{ cookiecutter.project_name }} INTERFACE cxx_std_14) #{{cookiecutter.repo_name}}
-
 
 # Set compile options
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
