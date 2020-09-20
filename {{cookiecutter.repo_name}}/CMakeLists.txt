@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
 
 # installation directories
-set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "include" CACHE STRING "The installation include directory")
+set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "lib" CACHE STRING "The installation include directory")
 set ({{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR "doc" CACHE STRING "The installation doc directory")
 set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecutter.project_name|lower }}/cmake" CACHE STRING "The installation cmake directory")
 
@@ -61,5 +61,5 @@ install (EXPORT {{ cookiecutter.project_name }}-targets
   DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper}}{% raw %}_INSTALL_CMAKE_DIR}{% endraw %}
   )
   
-install (DIRECTORY include/ DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %}_INSTALL_INCLUDE_DIR}){% endraw %}
+install (DIRECTORY lib/ DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %}_INSTALL_INCLUDE_DIR}){% endraw %}
 install (FILES LICENSE DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %}_INSTALL_DOC_DIR}){% endraw %}
