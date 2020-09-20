@@ -36,7 +36,7 @@ install (TARGETS {{ cookiecutter.project_name }} EXPORT {{ cookiecutter.project_
 
 install (EXPORT {{ cookiecutter.project_name }}-targets
   FILE {{ cookiecutter.project_name }}-config.cmake
-  NAMESPACE {{ cookiecutter.project_name }}
+  NAMESPACE {{ cookiecutter.project_name+'::' }}
   DESTINATION ${{{ cookiecutter.project_name }}_INSTALL_CMAKE_DIR}
 )
 
