@@ -58,6 +58,9 @@ if ({{ cookiecutter.project_name|upper }}_BUILD_TESTS)
   add_subdirectory (test)
 endif ()
 
+# Doxygen documentation
+add_subdirectory(doc)
+
 # install and export target
 install (TARGETS {{ cookiecutter.project_name|lower }} EXPORT {{ cookiecutter.project_name|lower }}-targets)
 
