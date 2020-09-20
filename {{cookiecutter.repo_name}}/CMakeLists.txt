@@ -36,6 +36,6 @@ install (TARGETS {{ cookiecutter.project_name|lower }} EXPORT {{ cookiecutter.pr
 
 install (EXPORT {{ cookiecutter.project_name }}-targets
   FILE {{ cookiecutter.project_name|lower }}-config.cmake
-  NAMESPACE {{ cookiecutter.project_name|join('::') }}
+  NAMESPACE {{ cookiecutter.project_name|append('::') }}
   DESTINATION TEST
   )
