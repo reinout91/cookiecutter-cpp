@@ -17,3 +17,6 @@ endif ()
 add_library(matrix_example_utils matrix_example_utils.cpp)
 add_executable({{ cookiecutter.project_name }} main.cpp)
 target_link_libraries({{ cookiecutter.project_name }} matrix_example_utils fmt::fmt ${ARMADILLO_LIBRARIES})
+
+# require C++17
+target_compile_features ({{ cookiecutter.project_name }} INTERFACE cxx_std_14) #{{cookiecutter.repo_name}}
