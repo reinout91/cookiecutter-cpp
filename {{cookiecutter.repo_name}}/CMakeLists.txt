@@ -21,9 +21,6 @@ set(PROJECT_DESCRIPTION   "A rock solid project with enforced style, testing and
 set(PROJECT_AUTHOR        "First Last")
 set(PROJECT_URL           "https://github.com/flast/matrix_example")
 
-# require C++17
-target_compile_features ({{ cookiecutter.project_name }} INTERFACE cxx_std_14) #{{cookiecutter.repo_name}}
-
 # Set build type if not set.
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
