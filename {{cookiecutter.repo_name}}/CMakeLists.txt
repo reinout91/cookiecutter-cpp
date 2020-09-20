@@ -22,27 +22,12 @@ set(PROJECT_AUTHOR        "First Last")
 set(PROJECT_URL           "https://github.com/flast/matrix_example")
 
 # require C++17
-target_compile_features (main INTERFACE cxx_std_14) #{{cookiecutter.repo_name}}
+target_compile_features ({{ cookiecutter.project_name }} INTERFACE cxx_std_14) #{{cookiecutter.repo_name}}
 
 # Set build type if not set.
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
-
-# Set compile options
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-
-set_target_properties (${exename} PROPERTIES
-  CXX_STANDARD 14
-  CXX_STANDARD_REQUIRED ON
-  CXX_EXTENSIONS OFF
-)
-if (MSVC)
-  target_compile_options (${exename} PRIVATE /W4 /WX /utf-8)
-else ()
-  target_compile_options (${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
-endif ()
 
 # Add the project package called {{ cookiecutter.project_name }}
 add_subdirectory (src/{{ cookiecutter.project_name|lower }})
