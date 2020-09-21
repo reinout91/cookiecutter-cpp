@@ -8,7 +8,6 @@ target_compile_options(${exename}
   PRIVATE
     ${_CXX_FLAGS}
   )
-target_link_libraries(${exename} {{ cookiecutter.project_name }}_utils PRIVATE fmt::fmt ${ARMADILLO_LIBRARIES})
 
 # Set compile options
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
@@ -24,3 +23,5 @@ if (MSVC)
 else ()
   target_compile_options (${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
 endif ()
+
+target_link_libraries(${exename} {{ cookiecutter.project_name }}_utils PRIVATE fmt::fmt ${ARMADILLO_LIBRARIES})
