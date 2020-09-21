@@ -8,7 +8,7 @@ target_compile_options(${exename}
   PRIVATE
     ${_CXX_FLAGS}
   )
-target_link_libraries(${exename} {{ cookiecutter.project_name }}_utils fmt::fmt ${ARMADILLO_LIBRARIES})
+target_link_libraries(${exename} {{ cookiecutter.project_name }}_utils PRIVATE fmt::fmt ${ARMADILLO_LIBRARIES})
 
 # Set compile options
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
