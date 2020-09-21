@@ -23,7 +23,7 @@ set(PROJECT_URL           "https://github.com/flast/matrix_example")
 
 # Set build type if not set.
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Release)
+  set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
 endif()
 
 # Add the project package called {{ cookiecutter.project_name }}
