@@ -3,6 +3,22 @@
 # Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
 cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
 
+# Check compiler support for vectorization
+include(CheckCXXCompilerFlag)
+check_cxx_compiler_flag("-march=native" _march_native_works)
+check_cxx_compiler_flag("-xHost" _xhost_works)
+
+set(_CXX_FLAGS)
+if(_march_native_works)
+  message(STATUS "Using processor's vector instructions (-march=native compiler flag set)")
+  set(_CXX_FLAGS "-march=native")
+elseif(_xhost_works)
+  message(STATUS "Using processor's vector instructions (-xHost compiler flag set)")
+  set(_CXX_FLAGS "-xHost")
+else()
+  message(STATUS "No suitable compiler flag found for vectorization")
+endif()
+
 # installation directories
 set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "lib" CACHE STRING "The installation include directory")
 set ({{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR "doc" CACHE STRING "The installation doc directory")
