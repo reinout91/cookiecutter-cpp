@@ -38,6 +38,9 @@ endif()
 # Add the project package called {{ cookiecutter.project_name }}
 add_subdirectory (src/{{ cookiecutter.project_name|lower }})
 
+# add external
+add_subdirectory(external)
+
 # testing
 enable_testing ()
 option ({{ cookiecutter.project_name|upper }}_BUILD_TESTS "Build test programs" ON)
