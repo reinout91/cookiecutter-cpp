@@ -1,5 +1,5 @@
 #include <iostream>
-#include <matrix_example_utils.h>
+#include {{ cookiecutter.project_name }}_utils.h>
 #include <fmt/core.h> //packagemanager downloaded library.
 #include <armadillo> //system wide installed package.
 
