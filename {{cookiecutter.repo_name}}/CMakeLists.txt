@@ -4,9 +4,9 @@
 cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
 
 # Check compiler support for vectorization
-include(CheckCXXCompilerFlag)
-check_cxx_compiler_flag("-march=native" _march_native_works)
-check_cxx_compiler_flag("-xHost" _xhost_works)
+# include(CheckCXXCompilerFlag)
+# check_cxx_compiler_flag("-march=native" _march_native_works)
+# check_cxx_compiler_flag("-xHost" _xhost_works)
 
 # installation directories
 set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "lib" CACHE STRING "The installation include directory")
