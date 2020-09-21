@@ -24,4 +24,9 @@ else ()
   target_compile_options (${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
 endif ()
 
-target_link_libraries(${exename} {{ cookiecutter.project_name }}_utils fmt::fmt ${ARMADILLO_LIBRARIES})
+target_link_libraries(${exename} 
+  PRIVATE
+    {{ cookiecutter.project_name }}_utils
+    fmt::fmt
+    ${ARMADILLO_LIBRARIES}
+  )
