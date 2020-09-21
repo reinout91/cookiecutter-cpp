@@ -9,17 +9,28 @@ cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
 # check_cxx_compiler_flag("-xHost" _xhost_works)
 
 # installation directories
-set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "lib" CACHE STRING "The installation include directory")
-set ({{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR "doc" CACHE STRING "The installation doc directory")
-set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecutter.project_name|lower }}/cmake" CACHE STRING "The installation cmake directory")
+# set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "lib" CACHE STRING "The installation include directory")
+# set ({{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR "doc" CACHE STRING "The installation doc directory")
+# set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecutter.project_name|lower }}/cmake" CACHE STRING "The installation cmake directory")
 
 # set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Static link libraries
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin) # Executables
 # set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Dynamic link libraries
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
+
+# Offer the user the choice of overriding the installation directories
+set(INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR} CACHE PATH "Installation directory for libraries")
+set(INSTALL_BINDIR ${CMAKE_INSTALL_BINDIR} CACHE PATH "Installation directory for executables")
+set(INSTALL_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR} CACHE PATH "Installation directory for header files")
+if(WIN32 AND NOT CYGWIN)
+  set(DEF_INSTALL_CMAKEDIR CMake)
+else()
+  set(DEF_INSTALL_CMAKEDIR share/cmake/${PROJECT_NAME})
+endif()
+set(INSTALL_CMAKEDIR ${DEF_INSTALL_CMAKEDIR} CACHE PATH "Installation directory for CMake files")
 
 # Make flags for running from an editor
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -30,10 +41,18 @@ set(PROJECT_DESCRIPTION   "A rock solid project with enforced style, testing and
 set(PROJECT_AUTHOR        "First Last")
 set(PROJECT_URL           "https://github.com/flast/matrix_example")
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+message(STATUS "Project will be installed to ${CMAKE_INSTALL_PREFIX}")
+
 # Set build type if not set.
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
 endif()
+
+message(STATUS "Build type set to ${CMAKE_BUILD_TYPE}")
 
 # Add the project package called {{ cookiecutter.project_name }}
 add_subdirectory (src/{{ cookiecutter.project_name|lower }})
