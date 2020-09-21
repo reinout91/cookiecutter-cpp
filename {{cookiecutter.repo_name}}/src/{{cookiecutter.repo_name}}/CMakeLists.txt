@@ -3,6 +3,11 @@ set (exename "{{ cookiecutter.project_name }}")
 add_library({{ cookiecutter.project_name }}_utils {{ cookiecutter.project_name }}_utils.cpp)
 add_executable(${exename} {{ cookiecutter.project_name }}.cpp)
 target_compile_features ({{ cookiecutter.project_name }}_utils INTERFACE cxx_std_14)
+
+target_compile_options(${exename}
+  PRIVATE
+    ${_CXX_FLAGS}
+  )
 target_link_libraries(${exename} {{ cookiecutter.project_name }}_utils fmt::fmt ${ARMADILLO_LIBRARIES})
 
 # Set compile options
