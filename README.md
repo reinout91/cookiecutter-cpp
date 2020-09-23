@@ -27,6 +27,7 @@ Usage:
     $ make
     $ ctest -vv
     $  ../bin/main
+    $ sudo make install
     
 
  
