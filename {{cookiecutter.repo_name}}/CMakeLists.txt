@@ -91,7 +91,7 @@ set_target_properties({{cookiecutter.project_name}}
 message(STATUS "Project will be installed to ${CMAKE_INSTALL_PREFIX}, admin rights may be required to make install")
 install(
   TARGETS
-    {{cookiecutter.project_name}}_utils
+    {{cookiecutter.project_name}}Utils
     {{cookiecutter.project_name}}
   ARCHIVE
     DESTINATION ${INSTALL_LIBDIR}
@@ -103,6 +103,6 @@ install(
     DESTINATION ${INSTALL_LIBDIR}
     COMPONENT lib
   PUBLIC_HEADER
-    DESTINATION ${INSTALL_INCLUDEDIR}/{{cookiecutter.project_name}}_utils
+    DESTINATION ${INSTALL_INCLUDEDIR}/{{cookiecutter.project_name}}Utils
     COMPONENT dev
   )
