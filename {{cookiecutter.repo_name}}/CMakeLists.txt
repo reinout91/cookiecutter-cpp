@@ -9,9 +9,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Project
 project({{cookiecutter.project_name}} C CXX)
 project({{cookiecutter.repo_name}} VERSION {{ cookiecutter.version }} LANGUAGES CXX)
-set(PROJECT_DESCRIPTION   "A rock solid project with enforced style, testing and static analysis")
-set(PROJECT_AUTHOR        "First Last")
-set(PROJECT_URL           "https://github.com/flast/{{cookiecutter.project_name}}")
+set(PROJECT_DESCRIPTION   "{{ cookiecutter.description }}")
+set(PROJECT_AUTHOR        "{{ cookiecutter.author }}")
+set(PROJECT_URL           "https://github.com/{{ cookiecutter.username }}/{{ cookiecutter.repo_name }}")
 
 # Build flags
 if(NOT CMAKE_BUILD_TYPE)
