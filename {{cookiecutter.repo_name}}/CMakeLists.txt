@@ -1,98 +1,108 @@
-# {{ cookiecutter.project_name }}
-# {{ cookiecutter.description }}
-# Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
-cmake_minimum_required (VERSION 3.8.0 FATAL_ERROR)
+# {{cookiecutter.project_name}}
+# A rock solid project with enforced style, testing and static analysis
+# Copyright 2020, First Last
+cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
-# Check compiler support for vectorization
-# include(CheckCXXCompilerFlag)
-# check_cxx_compiler_flag("-march=native" _march_native_works)
-# check_cxx_compiler_flag("-xHost" _xhost_works)
-
-# installation directories
-set ({{ cookiecutter.project_name|upper }}_INSTALL_INCLUDE_DIR "lib" CACHE STRING "The installation include directory")
-set ({{ cookiecutter.project_name|upper }}_INSTALL_DOC_DIR "doc" CACHE STRING "The installation doc directory")
-set ({{ cookiecutter.project_name|upper }}_INSTALL_CMAKE_DIR "share/{{ cookiecutter.project_name|lower }}/cmake" CACHE STRING "The installation cmake directory")
-
-# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Static link libraries
-# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin) # Executables
-# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # Dynamic link libraries
-
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
-
-# Offer the user the choice of overriding the installation directories
-set(INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR} CACHE PATH "Installation directory for libraries")
-set(INSTALL_BINDIR ${CMAKE_INSTALL_BINDIR} CACHE PATH "Installation directory for executables")
-set(INSTALL_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR} CACHE PATH "Installation directory for header files")
-if(WIN32 AND NOT CYGWIN)
-  set(DEF_INSTALL_CMAKEDIR CMake)
-else()
-  set(DEF_INSTALL_CMAKEDIR share/cmake/${PROJECT_NAME})
-endif()
-set(INSTALL_CMAKEDIR ${DEF_INSTALL_CMAKEDIR} CACHE PATH "Installation directory for CMake files")
-
-# Make flags for running from an editor
+# Can be useful for vim?
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Project
+project({{cookiecutter.project_name}} C CXX)
 project({{cookiecutter.repo_name}} VERSION {{ cookiecutter.version }} LANGUAGES CXX)
 set(PROJECT_DESCRIPTION   "A rock solid project with enforced style, testing and static analysis")
 set(PROJECT_AUTHOR        "First Last")
-set(PROJECT_URL           "https://github.com/flast/matrix_example")
+set(PROJECT_URL           "https://github.com/flast/{{cookiecutter.project_name}}")
 
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-message(STATUS "Project will be installed to ${CMAKE_INSTALL_PREFIX}")
-
-# Set build type if not set.
+# Build flags
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
+  set(CMAKE_BUILD_TYPE Debug)
 endif()
 
-message(STATUS "Build type set to ${CMAKE_BUILD_TYPE}")
+set (CMAKE_CXX_STANDARD 14)
 
-# Add the project package called {{ cookiecutter.project_name }}
-add_subdirectory (src/{{ cookiecutter.project_name|lower }})
-
-# add external
-add_subdirectory(external)
-
-# testing
-enable_testing ()
-option ({{ cookiecutter.project_name|upper }}_BUILD_TESTS "Build test programs" ON)
-if ({{ cookiecutter.project_name|upper }}_BUILD_TESTS)
-  add_subdirectory (test)
+if (MSVC)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /WX /utf-8")
+else ()
+  set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
+  set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic")
 endif ()
 
-# Doxygen documentation
-add_subdirectory(doc)
-
-# install and export target
-install (TARGETS {{ cookiecutter.project_name|lower }} EXPORT {{ cookiecutter.project_name|lower }}-targets)
-
-install (EXPORT {{ cookiecutter.project_name }}-targets
-  FILE {{ cookiecutter.project_name|lower }}-config.cmake
-  NAMESPACE {{ cookiecutter.project_name+'::' }}
-  DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper}}{% raw %}_INSTALL_CMAKE_DIR}{% endraw %}
-  )
-  
-install (DIRECTORY lib/ DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %}_INSTALL_INCLUDE_DIR}){% endraw %}
-install (FILES LICENSE DESTINATION ${% raw %}{{% endraw %}{{ cookiecutter.project_name|upper }}{% raw %}_INSTALL_DOC_DIR}){% endraw %}
-
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORYCMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 # Package manager manager (fmt is just a sample library to test the manager)
 include(pmm.cmake)
+
+# In the case of a Microsoft system, all packages should be installed by VCPKG, for UNIX systems, the user has to install the required packages using their system package manager.
+if (MSVC)
+  set(PMM_PACKAGES "fmt Armadillo")
+else ()
+  set(PMM_PACKAGES "fmt")
+  #sudo apt-get install libarmadillo-dev (VCPKG version is broken)
+endif ()
 pmm(
   # Use vcpkg
   VCPKG
   # Specify vcpkg branch, tag, or revision
   REVISION master
   # Space seperated list of required vcpkg packages
-  REQUIRES fmt
+  REQUIRES ${PMM_PACKAGES}
 )
 
-# Find required packages for project
+# Find required packages for project, these are the cmake targets reported by vcpkg.
 find_package(fmt CONFIG REQUIRED)
-find_package(Armadillo REQUIRED) #install it using ubuntu package manager:  sudo apt-get install libarmadillo-dev
+find_package(Armadillo REQUIRED)
+
+add_subdirectory(external)
+# Tell cmake where to look for *.h files.
+include_directories(${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/src/{{cookiecutter.project_name}} )
+# Outsource the actual processing to folders.
+add_subdirectory(src)
+# Must be in the top-most CMakeLists.txt file.
+enable_testing()
+# Outsource tests to another folder.
+add_subdirectory(test)
+add_subdirectory(doc)
+
+# Prepare RPATH
+if (NOT MSVC)
+  set(CMAKE_INSTALL_PREFIX "/home/user/.local") #We don't want to install to the default /usr/local. 
+endif ()
+file(RELATIVE_PATH _rel ${CMAKE_INSTALL_PREFIX}/${INSTALL_BINDIR} ${CMAKE_INSTALL_PREFIX})
+if(APPLE)
+  set(_rpath "@loader_path/${_rel}")
+else()
+  set(_rpath "\$ORIGIN/${_rel}")
+endif()
+file(TO_NATIVE_PATH "${_rpath}/${INSTALL_LIBDIR}" message_RPATH)
+
+set_target_properties({{cookiecutter.project_name}}
+  PROPERTIES
+    MACOSX_RPATH ON
+    SKIP_BUILD_RPATH OFF
+    BUILD_WITH_INSTALL_RPATH OFF
+    INSTALL_RPATH "${message_RPATH}"
+    INSTALL_RPATH_USE_LINK_PATH ON
+  )
+
+# Here you can select the binaries and libraries that have to be installed to the system.
+message(STATUS "Project will be installed to ${CMAKE_INSTALL_PREFIX}, admin rights may be required to make install")
+install(
+  TARGETS
+    {{cookiecutter.project_name}}_utils
+    {{cookiecutter.project_name}}
+  ARCHIVE
+    DESTINATION ${INSTALL_LIBDIR}
+    COMPONENT lib
+  RUNTIME
+    DESTINATION ${INSTALL_BINDIR}
+    COMPONENT bin
+  LIBRARY
+    DESTINATION ${INSTALL_LIBDIR}
+    COMPONENT lib
+  PUBLIC_HEADER
+    DESTINATION ${INSTALL_INCLUDEDIR}/{{cookiecutter.project_name}}_utils
+    COMPONENT dev
+  )
