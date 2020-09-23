@@ -19,10 +19,22 @@ set_target_properties (${exename} PROPERTIES
   CXX_EXTENSIONS OFF
 )
 if (MSVC)
-  target_compile_options (${exename}} PRIVATE /W4 /WX /utf-8)
+  target_compile_options (${exename} PRIVATE /W4 /WX /utf-8)
 else ()
   target_compile_options (${exename} PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
 endif ()
+
+set_target_properties ({{ cookiecutter.project_name }}_utils PROPERTIES
+  CXX_STANDARD 14
+  CXX_STANDARD_REQUIRED ON
+  CXX_EXTENSIONS OFF
+)
+if (MSVC)
+  target_compile_options ({{ cookiecutter.project_name }}_utils PRIVATE /W4 /WX /utf-8)
+else ()
+  target_compile_options ({{ cookiecutter.project_name }}_utils PRIVATE -pedantic -Wall -Wextra -Wshadow -Werror)
+endif ()
+
 
 target_link_libraries(${exename} 
   PRIVATE
