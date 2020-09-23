@@ -1,7 +1,7 @@
 cookiecutter-cpp
 ================
 
-Currently works only tested for Linux compilers.
+Currently only tested for Linux.
 
 A test-driven C++ project template built on CMake and GoogleTest
 
