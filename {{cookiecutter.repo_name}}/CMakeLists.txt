@@ -94,11 +94,11 @@ set_target_properties({{cookiecutter.project_name}}
 message(STATUS "Project will be installed to ${CMAKE_INSTALL_PREFIX}, admin rights may be required to make install")
 install(
   TARGETS
-    {{cookiecutter.project_name}}Utils
-    {{cookiecutter.project_name}}
+    tythUtils
+    tyth
   ARCHIVE
-    DESTINATION ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
-    COMPONENT lib
+  DESTINATION ${INSTALL_LIBDIR}
+    COMPONENT ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}
   RUNTIME
     DESTINATION ${INSTALL_BINDIR}
     COMPONENT ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
@@ -106,6 +106,6 @@ install(
     DESTINATION ${INSTALL_LIBDIR}
     COMPONENT ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
   PUBLIC_HEADER
-    DESTINATION ${INSTALL_INCLUDEDIR}/{{cookiecutter.project_name}}Utils
+    DESTINATION ${INSTALL_INCLUDEDIR}/tythUtils
     COMPONENT dev
   )
