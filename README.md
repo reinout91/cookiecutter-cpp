@@ -6,9 +6,9 @@ Currently only tested for Linux.
 A test-driven C++ project template built on CMake and GoogleTest
 
 CMake is a fast and easy build tool.  
-GoogleTest test ensures robust code.  
+Use of GoogleTest test ensures robust code.  
 Doxygen enables documentation.  
-pmm is a package manager manager. You can configure your project to use Conan or VCPKG.
+pmm is a package manager manager. You can configure your project to use Conan or VCPKG. This may become more important for cross platform development.
 
 This template was made by combining:
 Original Cookicutter project: https://github.com/hbristow/cookiecutter-cpp  
@@ -27,7 +27,7 @@ Usage:
     $ make
     $ ctest -vv
     $  ../bin/main
-    $ sudo make install
+    $ make install
     
 
  
