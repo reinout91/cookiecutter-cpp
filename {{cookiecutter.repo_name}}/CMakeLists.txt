@@ -71,7 +71,7 @@ add_subdirectory(doc)
 
 # Prepare RPATH
 if (NOT MSVC)
-  set(CMAKE_INSTALL_PREFIX "/home/user/.local") #We don't want to install to the default /usr/local. 
+  set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/user/.local") #We don't want to install to the default /usr/local. 
 endif ()
 file(RELATIVE_PATH _rel ${CMAKE_INSTALL_PREFIX}/${INSTALL_BINDIR} ${CMAKE_INSTALL_PREFIX})
 if(APPLE)
