@@ -94,8 +94,8 @@ set_target_properties({{cookiecutter.project_name}}
 message(STATUS "Project will be installed to ${CMAKE_INSTALL_PREFIX}, admin rights may be required to make install")
 install(
   TARGETS
-    tythUtils
-    tyth
+    {{cookiecutter.repo_name}}Utils
+    {{cookiecutter.repo_name}}
   ARCHIVE
   DESTINATION ${INSTALL_LIBDIR}
     COMPONENT ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}
