@@ -1,6 +1,7 @@
-# {{cookiecutter.project_name}}
-# A rock solid project with enforced style, testing and static analysis
-# Copyright 2020, First Last
+  
+# {{ cookiecutter.project_name }}
+# {{ cookiecutter.description }}
+# Copyright {{ cookiecutter.year }}, {{ cookiecutter.author }}
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
 # Can be useful for vim?
