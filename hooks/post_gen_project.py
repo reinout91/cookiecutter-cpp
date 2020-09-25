@@ -12,7 +12,7 @@ if __name__ == '__main__':
     subprocess.call(('git', 'checkout', '-b', branch))
     subprocess.call(('git', 'remote', 'add', remote, url))
     if os.name == 'nt':
-        subprocess.call(('move', 'pre-commit', '.git/hooks/'))
+        subprocess.call(('move', 'pre-commit', '.git\\hooks\\'))
     else:
         subprocess.call(('mv', 'pre-commit', '.git/hooks/'))
         
