@@ -1,5 +1,6 @@
 """Post-project generation hooks"""
 import os
+import shutil
 
 if __name__ == '__main__':
     """Initialize a git repository based on the configured branch and repo"""
@@ -12,7 +13,7 @@ if __name__ == '__main__':
     subprocess.call(('git', 'checkout', '-b', branch))
     subprocess.call(('git', 'remote', 'add', remote, url))
     if os.name == 'nt':
-        subprocess.call(('move', 'pre-commit', '.git\\hooks\\'))
+        shutil.move('pre-commit', '.git\\hooks\\')
     else:
         subprocess.call(('mv', 'pre-commit', '.git/hooks/'))
         
