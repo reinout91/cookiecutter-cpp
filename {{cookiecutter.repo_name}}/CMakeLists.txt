@@ -60,6 +60,7 @@ pmm(
 # Find required packages for project, these are the cmake targets reported by vcpkg.
 find_package(fmt CONFIG REQUIRED)
 find_package(Armadillo REQUIRED)
+include_directories(${ARMADILLO_INCLUDE_DIRS})
 
 add_subdirectory(external)
 # Tell cmake where to look for *.h files.
