@@ -53,7 +53,7 @@ pmm(
   # Space seperated list of required vcpkg packages
   REQUIRES ${PMM_PACKAGES}
 )
-DCMAKE_TOOLCHAIN_FILE=C:/Users/reino/AppData/Local/pmm/1.5.0/vcpkg-master/scripts/buildsystems/vcpkg.cmake
+set(DCMAKE_TOOLCHAIN_FILE="C:/Users/reino/AppData/Local/pmm/1.5.0/vcpkg-master/scripts/buildsystems/vcpkg.cmake")
 
 # Find required packages for project, these are the cmake targets reported by vcpkg.
 find_package(fmt CONFIG REQUIRED)
