@@ -39,6 +39,9 @@ include(pmm.cmake)
 
 # In the case of a Microsoft system, all packages should be installed by VCPKG, for UNIX systems, the user has to install the required packages using their system package manager.
 # In Linux, when a broken VCPKG package is installed by VCPKG, it should be manually uninstalled. Otherwise build errors might occur.
+
+set(BUILD_SHARED_LIBS=false)
+
 if (MSVC)
   set(PMM_PACKAGES fmt armadillo)
 else ()
