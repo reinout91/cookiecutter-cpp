@@ -2,5 +2,5 @@ add_library({{cookiecutter.repo_name}}Utils STATIC {{cookiecutter.repo_name}}Uti
 include_directories(SYSTEM ${ARMADILLO_INCLUDE_DIRS})
 add_executable({{cookiecutter.repo_name}} {{cookiecutter.repo_name}}.cpp)
 set(DIRS=fmt::fmt)
-list(APPEND DIRS ${ARMADILLO_LIBRARIES} 
+list(APPEND DIRS ${ARMADILLO_LIBRARIES})
 target_link_libraries({{cookiecutter.repo_name}} ${DIRS})
