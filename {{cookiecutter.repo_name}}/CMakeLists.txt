@@ -40,7 +40,7 @@ include(pmm.cmake)
 # In the case of a Microsoft system, all packages should be installed by VCPKG, for UNIX systems, the user has to install the required packages using their system package manager.
 # In Linux, when a broken VCPKG package is installed by VCPKG, it should be manually uninstalled. Otherwise build errors might occur.
 if (MSVC)
-  set(PMM_PACKAGES fmt Armadillo)
+  set(PMM_PACKAGES fmt armadillo-x64-windows-shared)
 else ()
   set(PMM_PACKAGES fmt)
   #sudo apt-get install libarmadillo-dev (VCPKG version is broken)
@@ -53,6 +53,7 @@ pmm(
   # Space seperated list of required vcpkg packages
   REQUIRES ${PMM_PACKAGES}
 )
+DCMAKE_TOOLCHAIN_FILE=C:/Users/reino/AppData/Local/pmm/1.5.0/vcpkg-master/scripts/buildsystems/vcpkg.cmake
 
 # Find required packages for project, these are the cmake targets reported by vcpkg.
 find_package(fmt CONFIG REQUIRED)
