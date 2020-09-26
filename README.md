@@ -1,7 +1,9 @@
 cookiecutter-cpp
 ================
 
-Currently only tested for Linux.
+PROBLEM!!
+I don't get the Armadillo library installed from VCPKG working, while an apt install in linux of libarmadillo-dev works as a charm.
+
 
 A test-driven C++ project template built on CMake and GoogleTest
 
