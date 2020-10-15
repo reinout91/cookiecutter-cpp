@@ -1,6 +1,7 @@
 add_library({{cookiecutter.repo_name}}Utils STATIC {{cookiecutter.repo_name}}Utils.cpp)
 message(STATUS armalibs ${ARMADILLO_LIBRARIES})
 add_executable({{cookiecutter.repo_name}} {{cookiecutter.repo_name}}.cpp)
-set(DIRS=fmt::fmt)
+set(DIRS fmt::fmt)
 list(APPEND DIRS ${ARMADILLO_LIBRARIES})
+list(APPEND DIRS {{cookiecutter.repo_name}}Utils)
 target_link_libraries({{cookiecutter.repo_name}} ${DIRS})
