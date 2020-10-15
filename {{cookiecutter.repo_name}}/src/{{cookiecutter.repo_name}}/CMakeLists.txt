@@ -3,7 +3,7 @@ add_library({{cookiecutter.repo_name}}Utils STATIC {{cookiecutter.repo_name}}Uti
 add_executable({{cookiecutter.repo_name}} {{cookiecutter.repo_name}}.cpp)
 set(DIRS fmt::fmt)
 #list(APPEND DIRS ${ARMADILLO_LIBRARIES})
-list(APPEND -L\C:\external\armadillo-10.1.0\build\Debug\armadillo.lib)
+list(APPEND DIRS -L\C:\external\armadillo-10.1.0\build\Debug\armadillo.lib)
 list(APPEND DIRS {{cookiecutter.repo_name}}Utils)
 list(APPEND DIRS LAPACK::LAPACK)
 list(APPEND DIRS OpenBLAS::OpenBLAS)
