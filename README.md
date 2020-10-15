@@ -31,9 +31,9 @@ Linux:
     $ make install
 
 Windows:
+------
 note: add C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin  (or similar) to PATH (edit environment settings)
 
-------
     $ pip install cookiecutter
     $ python -m cookiecutter gh:reinout91/cookiecutter-cpp
     $ cd {project dir}/build
