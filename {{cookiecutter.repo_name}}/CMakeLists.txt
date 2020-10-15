@@ -70,10 +70,17 @@ add_subdirectory(external)
 include_directories(${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/src/{{cookiecutter.project_name}} )
 # Outsource the actual processing to folders.
 add_subdirectory(src)
+
 # Must be in the top-most CMakeLists.txt file.
-enable_testing()
-# Outsource tests to another folder.
-add_subdirectory(test)
+# testing
+enable_testing ()
+option ({{ cookiecutter.project_name|upper }}_BUILD_TESTS "Build test programs" ON)
+if ({{ cookiecutter.project_name|upper }}_BUILD_TESTS)
+  add_subdirectory (test)
+endif ()
+
+
+
 add_subdirectory(doc)
 
 # Prepare RPATH
