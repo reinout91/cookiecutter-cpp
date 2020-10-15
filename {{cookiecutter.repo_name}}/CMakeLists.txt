@@ -43,7 +43,7 @@ include(pmm.cmake)
 set(BUILD_SHARED_LIBS=false)
 
 if (MSVC)
-  set(PMM_PACKAGES fmt armadillo)
+  set(PMM_PACKAGES fmt openblas lapack armadillo)
 else ()
   set(PMM_PACKAGES fmt)
   #sudo apt-get install libarmadillo-dev (VCPKG version is broken)
@@ -59,6 +59,7 @@ pmm(
 
 # Find required packages for project, these are the cmake targets reported by vcpkg.
 find_package(fmt CONFIG REQUIRED)
+find_package(OpenBLAS CONFIG REQUIRED)
 find_package(Armadillo REQUIRED)
 
 include_directories(${ARMADILLO_INCLUDE_DIRS})
