@@ -63,7 +63,7 @@ find_package(LAPACK)
 find_package(OpenBLAS CONFIG REQUIRED)
 find_package(Armadillo REQUIRED)
 
-//include_directories(${ARMADILLO_INCLUDE_DIRS})
+#include_directories(${ARMADILLO_INCLUDE_DIRS})
 
 add_subdirectory(external)
 # Tell cmake where to look for *.h files.
