@@ -45,7 +45,7 @@ set(BUILD_SHARED_LIBS=false)
 if (MSVC)
   set(PMM_PACKAGES fmt openblas lapack armadillo)
 else ()
-  set(PMM_PACKAGES fmt)
+  set(PMM_PACKAGES fmt openblas lapack armadillo)
   #sudo apt-get install libarmadillo-dev (VCPKG version is broken)
 endif ()
 pmm(
@@ -63,7 +63,7 @@ find_package(LAPACK)
 find_package(OpenBLAS CONFIG REQUIRED)
 find_package(Armadillo REQUIRED)
 
-include_directories(${ARMADILLO_INCLUDE_DIRS})
+//include_directories(${ARMADILLO_INCLUDE_DIRS})
 
 add_subdirectory(external)
 # Tell cmake where to look for *.h files.
