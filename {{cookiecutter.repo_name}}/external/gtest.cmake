@@ -8,7 +8,7 @@ include(ExternalProject)
 ExternalProject_Add(
     gtest
     URL https://github.com/google/googletest/archive/release-1.10.0.zip
-    URL_MD5 703bd9caab50b139428cea1aaff9974ebee5742e
+    URL_MD5 82358affdd7ab94854c8ee73a180fc53
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}
     # Disable INSTALL
     INSTALL_COMMAND ""
