@@ -59,6 +59,7 @@ pmm(
 
 # Find required packages for project, these are the cmake targets reported by vcpkg.
 find_package(fmt CONFIG REQUIRED)
+find_package(LAPACK)
 find_package(OpenBLAS CONFIG REQUIRED)
 find_package(Armadillo REQUIRED)
 
