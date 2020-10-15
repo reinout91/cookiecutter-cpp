@@ -30,5 +30,5 @@ Usage:
     $  ../bin/main
     $ make install
     
-
+This template is tested on Windows (using msvc compiler) and Linux (using clang)
  
