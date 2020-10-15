@@ -1,7 +1,7 @@
 cookiecutter-cpp
 ================
 
-A test-driven C++ project template built on CMake and GoogleTest
+A test-driven C++ project template built on CMake and GoogleTest, that uses Armadillo as an example.
 
 CMake is a fast and easy build tool.  
 Use of GoogleTest test ensures robust code.  
@@ -15,8 +15,8 @@ Boilerplate pmm project: https://github.com/ariveron/boilerplate-pmm-vcpkg-cmake
 CMake Example: https://github.com/dev-cafe/cmake-cookbook/blob/master/chapter-10/recipe-01/cxx-example/CMakeLists.txt
 
 
-Note: currently the vcpkg version of armadillo is not compiled using any wrappers. Therefore they must be explicitly disabled in the scripts that use them.
-instead vcpkg versions of openblas and lapack are linked explicitly.
+Note: currently the Vcpkg version of Armadillo is not compiled using any wrappers. Therefore they must be explicitly disabled in the scripts that use them.
+instead Vcpkg versions of OpenBLAS and LAPACK are linked explicitly.
 
 Usage:
 ------
