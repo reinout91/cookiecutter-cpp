@@ -1,10 +1,6 @@
 cookiecutter-cpp
 ================
 
-PROBLEM!!
-I don't get the Armadillo library installed from VCPKG working, while an apt install in linux of libarmadillo-dev works as a charm. The vcpkg version does not get properly linked.
-
-
 A test-driven C++ project template built on CMake and GoogleTest
 
 CMake is a fast and easy build tool.  
