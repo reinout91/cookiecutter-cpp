@@ -18,7 +18,7 @@ CMake Example: https://github.com/dev-cafe/cmake-cookbook/blob/master/chapter-10
 Note: currently the Vcpkg version of Armadillo is not compiled using any wrappers. Therefore they must be explicitly disabled in the scripts that use them.
 instead Vcpkg versions of OpenBLAS and LAPACK are linked explicitly.
 
-Usage:
+Linux:
 ------
 
     $ pip install cookiecutter
@@ -29,6 +29,13 @@ Usage:
     $ ctest -vv
     $  ../bin/main
     $ make install
-    
+
+Windows:
+------
+    $ pip install cookiecutter
+    $ python -m cookiecutter gh:reinout91/cookiecutter-cpp
+    $ cd {project dir}/build
+    $ cmake ..
+    $ cmake --build .
 This template is tested on Windows (using msvc compiler) and Linux (using clang)
- 
+
