@@ -29,7 +29,7 @@ Linux:
     $  ../bin/main
     $ make install
 
-Windows:
+Windows: (TESTS DON'T COMPILE YET!)
 ------
 note: add C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin  (or similar) to PATH (edit environment settings)
 
