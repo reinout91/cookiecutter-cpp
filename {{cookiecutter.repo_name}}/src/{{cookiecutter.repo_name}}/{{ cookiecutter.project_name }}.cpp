@@ -2,6 +2,7 @@
 #include <{{ cookiecutter.project_name }}Utils.h>
 #include <fmt/core.h> //packagemanager downloaded library.
 #define ARMA_DONT_USE_WRAPPER
+#define ARMA DONT_USE_BLAS
 #define ARMA_DONT_USE_LAPACK
 //#define ARMA_USE_BLAS
 #include <armadillo> //system wide installed package.
