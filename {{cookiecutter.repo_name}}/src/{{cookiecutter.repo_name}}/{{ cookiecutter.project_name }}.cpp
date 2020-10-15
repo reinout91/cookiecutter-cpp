@@ -1,6 +1,7 @@
 #include <iostream>
 #include <{{ cookiecutter.project_name }}Utils.h>
 #include <fmt/core.h> //packagemanager downloaded library.
+#define ARMA_DONT_USE_WRAPPER
 #include <armadillo> //system wide installed package.
 
 using namespace std;
