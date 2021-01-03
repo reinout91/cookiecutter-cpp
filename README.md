@@ -17,6 +17,13 @@ CMake Example: https://github.com/dev-cafe/cmake-cookbook/blob/master/chapter-10
 
 Note: currently the Vcpkg version of Armadillo is not compiled using any wrappers. Therefore they must be explicitly disabled in the scripts that use them. Vcpkg versions of OpenBLAS and LAPACK are linked explicitly.
 
+```cpp
+#define ARMA_DONT_USE_WRAPPER
+#define ARMA_DONT_USE_BLAS
+#define ARMA_DONT_USE_LAPACK
+//#define ARMA_USE_BLAS
+#include <armadillo> //system wide installed package.
+
 Linux:
 ------
 
