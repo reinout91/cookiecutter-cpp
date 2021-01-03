@@ -23,6 +23,7 @@ Note: currently the Vcpkg version of Armadillo is not compiled using any wrapper
 #define ARMA_DONT_USE_LAPACK
 //#define ARMA_USE_BLAS
 #include <armadillo> //system wide installed package.
+```
 
 Linux:
 ------
