@@ -47,5 +47,5 @@ note: add C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\
     $ cmake ..
     $ MSBuild.exe {project name}.sln /property:Configuration=Debug
     
-This template is tested on Windows (using msvc compiler) and Linux (using clang)
+This template was tested on Windows (using msvc compiler) and Linux (using clang)
 
