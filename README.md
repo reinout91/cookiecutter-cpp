@@ -1,6 +1,7 @@
 cookiecutter-cpp
 ================
 
+
 A test-driven C++ project template built on CMake and GoogleTest, that uses Armadillo as an example.
 
 CMake is a fast and easy build tool.  
